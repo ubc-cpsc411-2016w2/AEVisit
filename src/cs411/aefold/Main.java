@@ -12,6 +12,11 @@ public class Main {
         System.out.println(e);
         System.out.println(e.interp());
         System.out.println(e.fold(new InterpFolder()));
-        System.out.println();
+        System.out.println(new Num(0).fold(new HzFolder()));
+        System.out.println(new Num(1).fold(new HzFolder()));
+        System.out.println(new Add(new Num(0),new Num(1)).fold(new HzFolder()));
+        System.out.println(new Add(new Num(0),new Num(6)).fold(new AddSubSevenFolder()));
+        System.out.println(new Add(new Num(0),new Num(1)).accept(new HzVisitor()));
+        // throw new Error("bad things happened");
     }
 }

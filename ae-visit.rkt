@@ -176,23 +176,30 @@
 
 ;; (VisitorOf X) AE -> X
 ;; "accept" is the name that the Visitor pattern uses for this generalized fold
-(define (accept fr ae)
+(define (accept0 vr ae)
   (type-case AE ae
-    [Num (n) ((visit-num fr) fr ae)]
+    [Num (n) ((visit-num vr) vr ae)]
     [Add (ae1 ae2)
-         ((visit-add fr) fr ae)]
+         ((visit-add vr) vr ae)]
     [Sub (ae1 ae2)
-         ((visit-sub fr) fr ae)]))
+         ((visit-sub vr) vr ae)]))
+
+;; Since we don't use ae's constituents, this version of accept is simpler.
+(define (accept vr ae)
+  (cond
+    [(Num? ae) ((visit-num vr) vr ae)]
+    [(Add? ae) ((visit-add vr) vr ae)]
+    [(Sub? ae) ((visit-sub vr) vr ae)]))
 
 ;; AE -> Number
 (define (interp4 ae)
-  (let ([interp-visit-num (λ (fr nm) (Num-n nm))]
-        [interp-visit-add (λ (fr ad)
-                            (+ (accept fr (Add-lhs ad))
-                               (accept fr (Add-rhs ad))))]
-        [interp-visit-sub (λ (fr sb)
-                            (- (accept fr (Sub-lhs sb))
-                               (accept fr (Sub-rhs sb))))])
+  (let ([interp-visit-num (λ (vr nm) (Num-n nm))]
+        [interp-visit-add (λ (vr ad)
+                            (+ (accept vr (Add-lhs ad))
+                               (accept vr (Add-rhs ad))))]
+        [interp-visit-sub (λ (vr sb)
+                            (- (accept vr (Sub-lhs sb))
+                               (accept vr (Sub-rhs sb))))])
     (let ([interp-visitor
            (make-visitor interp-visit-num interp-visit-add interp-visit-sub)])
       (accept interp-visitor ae))))

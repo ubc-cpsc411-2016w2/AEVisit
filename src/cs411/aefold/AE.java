@@ -5,5 +5,6 @@ package cs411.aefold;
  */
 public abstract class AE {
     public abstract int interp();
-    public abstract <R> R fold(Folder<R> fr);
+    public abstract <X> X fold(Folder<X> fr);
+    public abstract <X> X accept(Visitor<X> v);
 }

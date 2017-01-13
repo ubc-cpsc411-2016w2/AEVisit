@@ -12,9 +12,7 @@ public class Num extends AE {
 
     @Override
     public String toString() {
-        return "Num(" +
-                 n +
-                ')';
+        return "Num(" + n + ')';
     }
 
     @Override
@@ -25,5 +23,10 @@ public class Num extends AE {
     @Override
     public <X> X fold(Folder<X> fr) {
         return fr.forNum(n);
+    }
+
+    @Override
+    public <X> X accept(Visitor<X> v) {
+        return v.visit(this); // calls Visitor<X>.visit(Num) because "this" has type Num
     }
 }

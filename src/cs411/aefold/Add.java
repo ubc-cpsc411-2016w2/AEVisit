@@ -24,4 +24,9 @@ public class Add extends AE {
 
     @Override
     public <X> X fold(Folder<X> fr) { return fr.forAdd(lhs.fold(fr),rhs.fold(fr)); }
+
+    @Override
+    public <X> X accept(Visitor<X> v) {
+        return v.visit(this); // calls Visitor<X>.visit(Add) because "this" has type Add
+    }
 }

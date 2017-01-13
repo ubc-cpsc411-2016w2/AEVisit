@@ -25,4 +25,9 @@ public class Sub extends AE {
     @Override
     public <X> X fold(Folder<X> fr) { return fr.forSub(lhs.fold(fr),rhs.fold(fr)); }
 
+    @Override
+    public <X> X accept(Visitor<X> v) {
+        return v.visit(this); // calls Visitor<X>.visit(Sub) because "this" has type Sub
+    }
+
 }

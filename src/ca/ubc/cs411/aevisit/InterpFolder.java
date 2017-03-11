@@ -1,13 +1,11 @@
-package cs411.aefold;
+package ca.ubc.cs411.aevisit;
 
 /**
  * Created by ronaldgarcia on 2017-01-10.
  */
 public class InterpFolder implements Folder<Integer> {
     @Override
-    public Integer forNum(int n) {
-        return new Integer(n);
-    }
+    public Integer forNum(int n) { return n; }
 
     @Override
     public Integer forAdd(Integer n1, Integer n2) {

@@ -1,4 +1,4 @@
-package cs411.aefold;
+package ca.ubc.cs411.aevisit;
 
 /**
  * Created by ronaldgarcia on 2017-01-10.

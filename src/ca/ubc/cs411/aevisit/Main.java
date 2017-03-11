@@ -1,4 +1,4 @@
-package cs411.aefold;
+package ca.ubc.cs411.aevisit;
 
 public class Main {
 
@@ -17,6 +17,10 @@ public class Main {
         System.out.println(new Add(new Num(0),new Num(1)).fold(new HzFolder()));
         System.out.println(new Add(new Num(0),new Num(6)).fold(new AddSubSevenFolder()));
         System.out.println(new Add(new Num(0),new Num(1)).accept(new HzVisitor()));
-        // throw new Error("bad things happened");
+        try {
+            throw new Exception("Main: bad things happened");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

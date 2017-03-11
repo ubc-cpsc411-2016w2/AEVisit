@@ -14,7 +14,7 @@ public class Sub extends AE {
 
     @Override
     public String toString() {
-        return "Sub(" + lhs + "," + rhs + ")";
+        return "new Sub(" + lhs + ", " + rhs + ")";
     }
 
     @Override

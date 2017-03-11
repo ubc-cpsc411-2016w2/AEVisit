@@ -12,7 +12,7 @@ public class Num extends AE {
 
     @Override
     public String toString() {
-        return "Num(" + n + ')';
+        return "new Num(" + n + ')';
     }
 
     @Override

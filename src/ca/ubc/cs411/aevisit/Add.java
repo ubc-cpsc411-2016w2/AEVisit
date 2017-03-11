@@ -14,7 +14,7 @@ public class Add extends AE {
 
     @Override
     public String toString() {
-        return "Add(" + lhs + "," + rhs + ")";
+        return "new Add(" + lhs + ", " + rhs + ")";
     }
 
     @Override

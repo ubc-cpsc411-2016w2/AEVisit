@@ -11,7 +11,7 @@ public class HzVisitor implements Visitor<Boolean> {
 
     @Override
     public Boolean visit(Add ad) {
-        // Thanks to short-circuiting || it recurs on rhs only if lhs yields false
+        // Thanks to short-circuiting || the following recurs on rhs only if lhs yields false
         return ad.lhs.accept(this) || ad.rhs.accept(this);
     }
 
